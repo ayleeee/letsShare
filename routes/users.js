@@ -35,7 +35,7 @@ router.post('/login',async(req,res)=>{
   if(!user){
     return res.json({
       loginSuccess:false,
-      message:"해당 이메일이 존재하지 않습니다",
+      message:"E-mail doesn't exist",
     })
   }else{
     if(req.body.password==user.password){
@@ -44,13 +44,13 @@ router.post('/login',async(req,res)=>{
       req.session.nickname=user.nickname;
       req.session.save((err)=>{
         if(err) return res.json({
-          message:"세션 저장 실패",
+          message:"session failed",
         })
         return res.redirect('/users/login-complete');
       })
     }else{
       return res.json({
-        messsage:"비밀번호가 일치하지 않습니다.",
+        messsage:"Wrong password",
       })
     }
   }
@@ -70,7 +70,7 @@ router.get('/logout',(req,res)=>{
       res.redirect('/users/login');
     })
   }else{
-    res.status(404).send("로그인 해주세요!");
+    res.status(404).send("Sign in Please!");
   }
 })
 
