@@ -39,7 +39,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/uploader',filesRouter);
-app.use('/files',downloadRouter);
+app.use('/downloads',downloadRouter);
 
 mongoose.connect(process.env.DB_STRING,{
   useNewUrlParser:true,

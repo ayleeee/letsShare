@@ -3,8 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var path = require('path');
 var File = require('../models/fileSchema');
-var {
-    v4:uuid4 } = require('uuid');
+var uuid = require('uuid');
 
 const storage = multer.diskStorage({
     destination:(req,file,cb)=>{
@@ -22,16 +21,16 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/',upload.single('myfile'),async(req,res)=>{
-    const file = new File({
+    const newfile = new File({
         filename:req.file.filename,
-        uuid:uuid4(),
+        uuid:uuid.v4(),
         path:req.file.path,
         size:req.file.size
     })
 
-    const response = await file.save();
+    const saved = await newfile.save();
     return res.status(200).json({
-        file:`${process.env.BASE_URL}/files/${response.uuid}`
+        file:`${process.env.BASE_URL}/downloads/${saved.uuid}`
     })
 })
 
