@@ -10,8 +10,6 @@ var FileStore=require("session-file-store")(session);
 
 require("dotenv/config");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var filesRouter = require('./routes/fileService');
 var downloadRouter = require('./routes/download');
 
@@ -36,9 +34,7 @@ app.use(session({
   store:new FileStore({retries:0})
 }));
   
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/uploader',filesRouter);
+app.use('/', filesRouter);
 app.use('/downloads',downloadRouter);
 
 mongoose.connect(process.env.DB_STRING,{

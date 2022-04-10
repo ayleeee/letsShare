@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/download.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 링크가 완성되었습니다 ! </h1>
+    <div id="main">
+        <div>
+            <button id="clickMe"> 링크 복사 </button>
+            <button id="mailer"> 이메일로 링크 보내기 </button>
+            <form action="/mailing" method="POST">
+            <div id="mail_div">
+                <input type="email" name="requester"> 보내는 사람 </input>
+                <input type="email" name="recepient"> 받는 사람 </input>
+                <textarea placeholder="메모를 첨부해 보세요" name="memo" id="memo"></textarea>
+                <button> send</button>
+            </div>
+            <textarea id="result" name="result"></textarea>
+        </form>
+        </div>
+    </div>
+
+</body>
+<script>
+    const clickMe = document.getElementById('clickMe');
+    const mailer = document.getElementById('mailer');
+    const mail_div = document.getElementById('mail_div');
+    const result = document.getElementById('result');
+    const memo = document.getElementById('memo');
+    result.style.display='none';
+    mail_div.style.display='none';
+
+    clickMe.addEventListener('click',(e)=>{
+        result.innerHTML='<%=file%>'
+        result.style.display='block'
+        result.select();
+        result.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+        alert('복사가 되었습니다! 붙여넣기 해보세요!');
+    })
+
+
+    mailer.addEventListener('click',(e)=>{
+        result.innerHTML='<%=file%>'
+        result.style.display='none';
+        mail_div.style.display='block';
+    })
+
+    
+</script>
+</html>

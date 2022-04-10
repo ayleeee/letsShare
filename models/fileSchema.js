@@ -19,7 +19,12 @@ const fileSchema=mongoose.Schema({
     uuid:{
         type:String,
         required:true
+    },
+    createdAt:{
+        type:Date,
+        expires:'60m',
+        default:Date.now,
     }
-})
+});
 
 module.exports=mongoose.model('File',fileSchema);

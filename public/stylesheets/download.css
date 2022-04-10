@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+h1{
+    position: absolute;
+    left: 50%;
+    top:30%;
+    transform: translate(-50%,-50%);
+    font-family: 'Bebas Neue', cursive;
+}
+
+#main{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    width:300px;
+    height: 160px;
+    margin-left: -150px;
+    margin-top: -80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clickMe{
+    font-size: 25px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    background-color: rgb(195, 236, 119);
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#mailer{
+    font-size: 25px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    background-color: rgb(195, 236, 119);
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
