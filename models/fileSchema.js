@@ -22,7 +22,7 @@ const fileSchema=mongoose.Schema({
     },
     createdAt:{
         type:Date,
-        expires:'60m',
+        expires:'3600',
         default:Date.now,
     }
 });
