@@ -57,8 +57,9 @@ router.post('/mailing',(req,res)=>{
             <p> 知らないメールアドレスならリンクを押さないでください。</p>
             <p> リンクは１時間のみ有効です。</p>
                 <div>
-                <p> リンク : <a href=${req.body.result}>こちらをクリックしてください</a></p>
+                <p> ダウンロードリンク : <a href=${req.body.result_text}>こちらをクリックしてください</a></p>
                 <br>
+                <iframe src=${req.body.result}></iframe>
                 <p> 以下は${req.body.requester}のメモです。</p>
                 ${req.body.memo}
                 </div>`,
