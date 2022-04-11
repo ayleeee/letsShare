@@ -28,7 +28,6 @@
             </div>
             <div id="result_area">
             <span id="result" name="result"><%=fileView%></span>
-            <span id="result2" name="result2"><%=file%></span>
             <textarea id="resultforView" name="resultforView"><%=fileView%></textarea>
             <textarea id="result_text" name="result_text"><%=file%></textarea>
             </div>
@@ -40,13 +39,11 @@
     const mailer = document.getElementById('mailer');
     const mail_div = document.getElementById('mail_div');
     const result = document.getElementById('result');
-    const result2 = document.getElementById('result2');
     const result_text=document.getElementById("result_text");
     const resultforView =document.getElementById("resultforView");
     const memo = document.getElementById('memo');
 
     result.style.display='none';
-    result2.style.display="none";
     result_text.style.display="none";
     mail_div.style.display='none';
     resultforView.style.display="none";
@@ -57,11 +54,9 @@
             // result_text.style.display="none";
             mail_div.style.display='none'
         }else{
-            result.innerHTML='ダウンロードリンク : <a href= "<%=file%>" > <%=file%> </a>'
-            result2.innerHTML='内容確認のリンク　：　<a href="<%=fileView%>"><%=fileView%></a>'
+            result.innerHTML='ダウンロードリンク : <a href= "<%=file%>" > <%=file%> </a> <br><br> 内容確認のリンク　：　<a href="<%=fileView%>"><%=fileView%></a>'
             result_text.innerHTML='<%=file%>'
             result.style.display='block'
-            result2.style.display='block'
             result_text.style.display='block'
             result_text.select();
             result_text.setSelectionRange(0, 99999);
