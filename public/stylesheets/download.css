@@ -5,7 +5,7 @@
 h1{
     position: absolute;
     left: 50%;
-    top:30%;
+    top:25%;
     transform: translate(-50%,-50%);
     white-space: nowrap;
     
@@ -52,6 +52,7 @@ textarea{
     outline: none;
     text-align: center;
     margin-bottom: 8px;
+    margin-top:10px;
 }
 
 #clickMe:hover,#mailer:hover{
@@ -89,8 +90,8 @@ textarea{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top:25px;
-    z-index: 2000;
+    padding-top:50px;
+    z-index: 3000;
 }
 
 #memo{

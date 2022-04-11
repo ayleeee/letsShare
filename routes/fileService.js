@@ -57,16 +57,17 @@ router.post('/mailing',(req,res)=>{
             <p> 知らないメールアドレスならリンクを押さないでください。</p>
             <p> リンクは１時間のみ有効です。</p>
                 <div>
-                <p> ダウンロードリンク : <a href=${req.body.result_text}>こちらをクリックしてください</a></p>
+                <p>内容は <a href='${req.body.result}'>こちら</a>で確認できます</p>
+                <p> ダウンロードリンク : '${req.body.result_text}'</p>
                 <br>
-                <iframe src=${req.body.result}></iframe>
-                <p> 以下は${req.body.requester}のメモです。</p>
+                <p> 以下は${req.body.requester}さんのメモです。</p>
                 ${req.body.memo}
                 </div>`,
     })
+
     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-    res.write("<script>alert('メールを送りました！　ホームに帰ります。')</script>");
-    res.write("<script>window.location=\"/\"</script>");
+    res.write("<script>alert('メールを送りました！　ホーム画面戻ります。')</script>");
+    res.write("<script> setTimeout(()=>{window.location=\"/\"},3000)</script>")
 })
 
 module.exports=router;

@@ -15,7 +15,7 @@
             <button id="mailer"> メールでリンクを送る </button>
         </div>
         <form action="/mailing" method="POST" name="mailing">
-        <div id="mail_div">
+            <div id="mail_div">
             <label for="requester" id="requestLabel">送信者 : </label>
             <input type="email" name="requester" id="requester" class="requester" placeholder="本人のメールアドレスを書いてください。" required>
             <br>
@@ -24,11 +24,11 @@
             <br>
             <textarea placeholder="メモを書いてください。" name="memo" id="memo"></textarea>
             <button id="sender"> 送る</button>
-        </div>
-        <div id="result_area">
-            <span id="result" name="result"></span>
-            <textarea id="result_text"></textarea>
-        </div>
+            </div>
+            <div id="result_area">
+            <textarea id="result" name="result"><%=fileView%></textarea>
+            <textarea id="result_text" name="result_text"><%=file%></textarea>
+            </div>
         </form>
     </div>
 </body>
@@ -49,8 +49,8 @@
             result.style.display="none";
             result_text.style.display="none";
         }else{
-            result.innerHTML='<a href="<%=fileView%>"><%=fileView%></a>'
-            result_text.innerHTML='<%=fileView%>'
+            result.innerHTML='<a href="<%=file%>"><%=file%></a>'
+            //result_text.innerHTML='<%=fileView%>'
             result.style.display='block'
             result_text.style.display='block'
             result_text.select();
@@ -67,17 +67,17 @@
 
     })
 
-
     mailer.addEventListener('click',(e)=>{
         if(mail_div.style.display=='block' || result.style.display=='block'){
             mail_div.style.display="none";
         }else{
             result_text.innerHTML='<%=file%>'
+            result.innerHTML='<%=fileView%>'
             result_text.style.display='block'
-            result_text.style.display='none';
             result_text.select();
             result_text.setSelectionRange(0, 99999);
             document.execCommand('copy');
+            result_text.style.display="none";
             mail_div.style.display="block";
         }
     })
