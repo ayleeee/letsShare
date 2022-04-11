@@ -8,23 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> 링크가 완성되었습니다 ! </h1>
+    <h1> 링크가 완성되었습니다! </h1>
     <div id="main">
-        <div>
-            <button id="clickMe"> 링크 복사 </button>
+        <div id="buttons">
+            <button id="clickMe"> 링크 복사 </button><br>
             <button id="mailer"> 이메일로 링크 보내기 </button>
-            <form action="/mailing" method="POST">
-            <div id="mail_div">
-                <input type="email" name="requester"> 보내는 사람 </input>
-                <input type="email" name="recepient"> 받는 사람 </input>
-                <textarea placeholder="메모를 첨부해 보세요" name="memo" id="memo"></textarea>
-                <button> send</button>
-            </div>
-            <textarea id="result" name="result"></textarea>
-        </form>
         </div>
+        <form action="/mailing" method="POST" name="mailing">
+        <div id="mail_div">
+            <label for="requester" id="requestLabel">보내는 사람 : </label>
+            <input type="email" name="requester" id="requester" class="requester" placeholder="이메일 주소">
+            <br>
+            <label for="recepient" id="recepientLabel">받는 사람 : </label>
+            <input type="email" name="recepient" id="recepient" class="recepient" placeholder="이메일 주소"> 
+            <br>
+            <textarea placeholder="메모를 첨부해 보세요" name="memo" id="memo"></textarea>
+            <button id="sender" onclick="valiChecker()"> send</button>
+        </div>
+        <div id="result_area">
+            <textarea id="result" name="result"></textarea>
+        </div>
+        </form>
     </div>
-
 </body>
 <script>
     const clickMe = document.getElementById('clickMe');
@@ -32,8 +37,16 @@
     const mail_div = document.getElementById('mail_div');
     const result = document.getElementById('result');
     const memo = document.getElementById('memo');
+
+    const recepient = document.getElementById('receipent');
+    const requester = document.getElementById('requester');
+    const sender=document.getElementById('sender');
+
     result.style.display='none';
     mail_div.style.display='none';
+
+    let status = false;
+
 
     clickMe.addEventListener('click',(e)=>{
         result.innerHTML='<%=file%>'
@@ -47,9 +60,13 @@
 
     mailer.addEventListener('click',(e)=>{
         result.innerHTML='<%=file%>'
+        result.style.display='block'
         result.style.display='none';
+        result.select();
+        result.setSelectionRange(0, 99999);
+        document.execCommand('copy');
         mail_div.style.display='block';
     })
-    
+
 </script>
 </html>
