@@ -1,6 +1,7 @@
 var express=require('express');
 var router = express.Router();
 var File = require('../models/fileSchema');
+var fs = require("fs");
 
 router.get('/:uuid',async (req,res)=>{
     const fileDownload = await File.findOne({
@@ -14,7 +15,7 @@ router.get('/:uuid',async (req,res)=>{
     }
 
     const filePath = `${__dirname}/../${fileDownload.path}`;
-    res.download(filePath);
+    return res.download(filePath);
 })
 
 module.exports=router;
