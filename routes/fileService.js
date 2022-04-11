@@ -50,15 +50,15 @@ router.post('/mailing',(req,res)=>{
 
     var sender = transport.sendMail ({
         from : req.body.requester,
-        to: req.body.recepient,
+        to: req.body.recipient,
         subject:`${req.body.requester}`+"さんが送ったメールをご確認ください!",
         html:`<h3> こんにちは。 ファイル共有サービス letsShare です。</h3>
             <p> 本メールは ${req.body.requester} さんの要求により行います。</p>
             <p> 知らないメールアドレスならリンクを押さないでください。</p>
             <p> リンクは１時間のみ有効です。</p>
                 <div>
-                <p>内容は <a href='${req.body.result}'>こちら</a>で確認できます</p>
-                <p> ダウンロードリンク : '${req.body.result_text}'</p>
+                <p>内容は <a href=${req.body.resultforView}>こちら</a>で確認できます</p>
+                <p> ダウンロードリンク : ${req.body.result_text}</p>
                 <br>
                 <p> 以下は${req.body.requester}さんのメモです。</p>
                 ${req.body.memo}
@@ -66,8 +66,8 @@ router.post('/mailing',(req,res)=>{
     })
 
     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-    res.write("<script>alert('メールを送りました！　ホーム画面戻ります。')</script>");
-    res.write("<script> setTimeout(()=>{window.location=\"/\"},3000)</script>")
+    res.write("<script>alert('メールを送りました！ホーム画面戻ります。')</script>");
+    res.write("<script> window.location=\"/\"</script>")
 })
 
 module.exports=router;

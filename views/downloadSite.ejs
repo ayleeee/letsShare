@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+    <img src="images/home.png" width="30px" height="30px" onclick="goHome()" id="img">
     <h1> リンクが出ました！ <br> リンクは1時間のみ有効です。 </h1>
     <div id="main">
         <div id="buttons">
@@ -20,13 +21,14 @@
             <input type="email" name="requester" id="requester" class="requester" placeholder="本人のメールアドレスを書いてください。" required>
             <br>
             <label for="recepient" id="recepientLabel">受信者 : </label>
-            <input type="email" name="recepient" id="recepient" class="recepient" placeholder="受信者のメールアドレスを書いてください" required> 
+            <input type="email" name="recipient" id="recipient" class="recipient" placeholder="受信者のメールアドレスを書いてください" required> 
             <br>
             <textarea placeholder="メモを書いてください。" name="memo" id="memo"></textarea>
             <button id="sender"> 送る</button>
             </div>
             <div id="result_area">
-            <textarea id="result" name="result"><%=fileView%></textarea>
+            <span id="result" name="result"><%=fileView%></span>
+            <textarea id="resultforView" name="resultforView"><%=fileView%></textarea>
             <textarea id="result_text" name="result_text"><%=file%></textarea>
             </div>
         </form>
@@ -38,31 +40,30 @@
     const mail_div = document.getElementById('mail_div');
     const result = document.getElementById('result');
     const result_text=document.getElementById("result_text");
+    const resultforView =document.getElementById("resultforView");
     const memo = document.getElementById('memo');
 
     result.style.display='none';
     result_text.style.display="none";
     mail_div.style.display='none';
+    resultforView.style.display="none";
 
     clickMe.addEventListener('click',(e)=>{
         if(result.style.display=="block" || mail_div.style.display=='block'){
-            result.style.display="none";
-            result_text.style.display="none";
+             result.style.display="none";
+            // result_text.style.display="none";
+            mail_div.style.display='none'
         }else{
-            result.innerHTML='<a href="<%=file%>"><%=file%></a>'
-            //result_text.innerHTML='<%=fileView%>'
+            result.innerHTML='ダウンロードリンク : <a href="<%=file%>"><%=file%></a> <br><br> 内容確認のリンク　：　<a href="<%=fileView%>"><%=fileView%></a>'
+            result_text.innerHTML='<%=file%>'
             result.style.display='block'
             result_text.style.display='block'
             result_text.select();
             result_text.setSelectionRange(0, 99999);
             document.execCommand('copy');
             result_text.style.display="none";
-            //result.style.display="none"
-            alert('リンクコピー完了！ リンクを使用してファイルを共有しましょう！ 3秒後ホームに帰ります。');
-            setTimeout(()=>{
-                location.href="/";
-            },3000);
-
+            
+            alert('リンクを使用してファイルを共有しましょう！');
         }
 
     })
@@ -73,6 +74,7 @@
         }else{
             result_text.innerHTML='<%=file%>'
             result.innerHTML='<%=fileView%>'
+            resultforView.innerHTML='<%=fileView%>'
             result_text.style.display='block'
             result_text.select();
             result_text.setSelectionRange(0, 99999);
@@ -81,6 +83,10 @@
             mail_div.style.display="block";
         }
     })
+
+    function goHome(){
+        window.location="/";
+    }
 
 </script>
 </html>

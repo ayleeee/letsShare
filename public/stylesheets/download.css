@@ -8,12 +8,14 @@ h1{
     top:25%;
     transform: translate(-50%,-50%);
     white-space: nowrap;
-    
 }
 
 textarea{
     resize: none;
 }
+
+/* div */
+
 
 #main{
     position:absolute;
@@ -37,33 +39,6 @@ textarea{
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-}
-
-#clickMe,#mailer{
-    cursor: pointer;
-    font-size: 20px;
-    background-color: transparent;
-    border: 2px solid #1A1A1A;
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 0;
-    width: 300px;
-    height: 50px;
-    outline: none;
-    text-align: center;
-    margin-bottom: 8px;
-    margin-top:10px;
-}
-
-#clickMe:hover,#mailer:hover{
-    color: #fff;
-    background-color: #1A1A1A;
-    transform: translateY(-2px);
-}
-
-#clickMe:active,#mailer:active{
-    box-shadow: none;
-  transform: translateY(0);
 }
 
 #result_area{
@@ -94,6 +69,35 @@ textarea{
     z-index: 3000;
 }
 
+/*button*/
+
+#clickMe,#mailer{
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    width: 300px;
+    height: 50px;
+    outline: none;
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top:10px;
+}
+
+#clickMe:hover,#mailer:hover{
+    color: #fff;
+    background-color: #1A1A1A;
+    transform: translateY(-2px);
+}
+
+#clickMe:active,#mailer:active{
+    box-shadow: none;
+  transform: translateY(0);
+}
+
 #memo{
     width: 300px;
     height: 100px;
@@ -104,7 +108,11 @@ textarea{
     height:50px;
 }
 
-.requester,.recepient{
+#img{
+    cursor: pointer;
+}
+
+.requester,.recipient{
     padding-top: 5px;
     margin-bottom: 12px;
     width:300px;

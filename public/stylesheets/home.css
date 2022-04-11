@@ -64,10 +64,6 @@ h1{
 
 }
 
-.inputfile+label:disabled {
-  pointer-events: none;
-}
-
 .inputfile+label:hover {
   color: #fff;
   background-color: #1A1A1A;
