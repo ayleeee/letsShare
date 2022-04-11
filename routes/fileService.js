@@ -33,7 +33,7 @@ router.post('/',upload.single('myfile'),async(req,res)=>{
 
     const saved = await newfile.save();
 
-    return res.render('downloadSite',{file:`${process.env.BASE_URL}/downloads/${saved.uuid}`})
+    return res.render('downloadSite',{file:`${process.env.BASE_URL}/downloads/${saved.uuid}`,fileView:`${process.env.BASE_URL}/view/${saved.uuid}`})
 })
 
 router.post('/mailing',(req,res)=>{
@@ -67,7 +67,6 @@ router.post('/mailing',(req,res)=>{
     res.write("<script>alert('メールを送りました！　ホームに帰ります。')</script>");
     res.write("<script>window.location=\"/\"</script>");
 })
-
 
 module.exports=router;
 

@@ -49,8 +49,8 @@
             result.style.display="none";
             result_text.style.display="none";
         }else{
-            result.innerHTML='<a href="<%=file%>"><%=file%></a>'
-            result_text.innerHTML='<%=file%>'
+            result.innerHTML='<a href="<%=fileView%>"><%=fileView%></a>'
+            result_text.innerHTML='<%=fileView%>'
             result.style.display='block'
             result_text.style.display='block'
             result_text.select();
@@ -72,7 +72,7 @@
         if(mail_div.style.display=='block' || result.style.display=='block'){
             mail_div.style.display="none";
         }else{
-            result_text.innerHTML='<%=file%>'
+            result_text.innerHTML='<%=fileView%>'
             result_text.style.display='block'
             result_text.style.display='none';
             result_text.select();

@@ -12,6 +12,7 @@ require("dotenv/config");
 
 var filesRouter = require('./routes/fileService');
 var downloadRouter = require('./routes/download');
+var viewRouter=require("./routes/viewer");
 
 var app = express();
 
@@ -26,16 +27,9 @@ app.use(bodyPaser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  key: 'is_logined',
-  secret: 'mysecret',
-  resave: false,
-  saveUninitialized: false,
-  store:new FileStore({retries:0})
-}));
-  
 app.use('/', filesRouter);
 app.use('/downloads',downloadRouter);
+app.use('/view',viewRouter);
 
 mongoose.connect(process.env.MONGODB_URL ,{
   useNewUrlParser:true,
