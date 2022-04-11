@@ -6,6 +6,7 @@ var path = require('path');
 var File = require('../models/fileSchema');
 var uuid = require('uuid');
 var nodemailer=require("nodemailer");
+var fs = require("fs");
 
 const storage = multer.diskStorage({
     destination:(req,file,cb)=>{

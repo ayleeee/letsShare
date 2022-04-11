@@ -7,6 +7,7 @@ var mongoose=require("mongoose");
 var bodyPaser=require("body-parser");
 var session = require("express-session");
 var FileStore=require("session-file-store")(session);
+var fs = require("fs");
 
 require("dotenv/config");
 
