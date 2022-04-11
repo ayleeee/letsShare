@@ -8,25 +8,26 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> 링크가 완성되었습니다! </h1>
+    <h1> リンクが出ました！ <br> リンクは1時間のみ有効です。 </h1>
     <div id="main">
         <div id="buttons">
-            <button id="clickMe"> 링크 복사 </button><br>
-            <button id="mailer"> 이메일로 링크 보내기 </button>
+            <button id="clickMe"> リンクコピー </button><br>
+            <button id="mailer"> メールでリンクを送る </button>
         </div>
         <form action="/mailing" method="POST" name="mailing">
         <div id="mail_div">
-            <label for="requester" id="requestLabel">보내는 사람 : </label>
-            <input type="email" name="requester" id="requester" class="requester" placeholder="이메일 주소">
+            <label for="requester" id="requestLabel">送信者 : </label>
+            <input type="email" name="requester" id="requester" class="requester" placeholder="本人のメールアドレスを書いてください。" required>
             <br>
-            <label for="recepient" id="recepientLabel">받는 사람 : </label>
-            <input type="email" name="recepient" id="recepient" class="recepient" placeholder="이메일 주소"> 
+            <label for="recepient" id="recepientLabel">受信者 : </label>
+            <input type="email" name="recepient" id="recepient" class="recepient" placeholder="受信者のメールアドレスを書いてください" required> 
             <br>
-            <textarea placeholder="메모를 첨부해 보세요" name="memo" id="memo"></textarea>
-            <button id="sender" onclick="valiChecker()"> send</button>
+            <textarea placeholder="メモを書いてください。" name="memo" id="memo"></textarea>
+            <button id="sender"> 送る</button>
         </div>
         <div id="result_area">
-            <textarea id="result" name="result"></textarea>
+            <span id="result" name="result"></span>
+            <textarea id="result_text"></textarea>
         </div>
         </form>
     </div>
@@ -36,36 +37,49 @@
     const mailer = document.getElementById('mailer');
     const mail_div = document.getElementById('mail_div');
     const result = document.getElementById('result');
+    const result_text=document.getElementById("result_text");
     const memo = document.getElementById('memo');
 
-    const recepient = document.getElementById('receipent');
-    const requester = document.getElementById('requester');
-    const sender=document.getElementById('sender');
-
     result.style.display='none';
+    result_text.style.display="none";
     mail_div.style.display='none';
 
-    let status = false;
-
-
     clickMe.addEventListener('click',(e)=>{
-        result.innerHTML='<%=file%>'
-        result.style.display='block'
-        result.select();
-        result.setSelectionRange(0, 99999);
-        document.execCommand('copy');
-        alert('복사가 되었습니다! 붙여넣기 해보세요!');
+        if(result.style.display=="block" || mail_div.style.display=='block'){
+            result.style.display="none";
+            result_text.style.display="none";
+        }else{
+            result.innerHTML='<a href="<%=file%>"><%=file%></a>'
+            result_text.innerHTML='<%=file%>'
+            result.style.display='block'
+            result_text.style.display='block'
+            result_text.select();
+            result_text.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            result_text.style.display="none";
+            //result.style.display="none"
+            alert('リンクコピー完了！ リンクを使用してファイルを共有しましょう！ 3秒後ホームに帰ります。');
+            setTimeout(()=>{
+                location.href="/";
+            },3000);
+
+        }
+
     })
 
 
     mailer.addEventListener('click',(e)=>{
-        result.innerHTML='<%=file%>'
-        result.style.display='block'
-        result.style.display='none';
-        result.select();
-        result.setSelectionRange(0, 99999);
-        document.execCommand('copy');
-        mail_div.style.display='block';
+        if(mail_div.style.display=='block' || result.style.display=='block'){
+            mail_div.style.display="none";
+        }else{
+            result_text.innerHTML='<%=file%>'
+            result_text.style.display='block'
+            result_text.style.display='none';
+            result_text.select();
+            result_text.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            mail_div.style.display="block";
+        }
     })
 
 </script>

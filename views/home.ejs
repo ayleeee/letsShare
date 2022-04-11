@@ -8,15 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> 공유하고 싶은 파일을 업로드 해주세요</h1>
+    <h1> 共有したいファイルを選択してください</h1>
     <div id='main'>
     <form action="/" method="post" enctype="multipart/form-data">
-        <input type="file" name='myfile' id="file" class="inputfile">
-        <label for="file" id="fileLabel"> Choose a file </label>
+        <input type="file" name='myfile' id="file" class="inputfile" required>
+        <label for="file" id="fileLabel"> ファイル選択 </label>
     </div>
 
     <div id='btm'>
-        <button id='btn'>Upload</button>
+        <button id='btn'>アップロード</button>
     </div>
 </form>
 
@@ -27,5 +27,14 @@
         const filename=document.getElementById('fileLabel');
         filename.innerHTML=file.value.replace(/^.*[\\\/]/, '');
     }
+
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click',(e)=>{
+        if(document.getElementById('file').value==""){
+            alert("ファイルを選択してください");
+            return false;
+        }
+    })
+
 </script>
 </html>

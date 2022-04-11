@@ -7,6 +7,7 @@ h1{
     left: 50%;
     top:30%;
     transform: translate(-50%,-50%);
+    white-space: nowrap;
     
 }
 
@@ -44,15 +45,24 @@ textarea{
     background-color: transparent;
     border: 2px solid #1A1A1A;
     box-sizing: border-box;
-    color: #3B3B3B;
     display: inline-block;
     margin: 0;
     width: 300px;
     height: 30px;
     outline: none;
     text-align: center;
-    -webkit-user-select: none;
     margin-bottom: 5px;
+}
+
+#clickMe:hover,#mailer:hover{
+    color: #fff;
+    background-color: #1A1A1A;
+    transform: translateY(-2px);
+}
+
+#clickMe:active,#mailer:active{
+    box-shadow: none;
+  transform: translateY(0);
 }
 
 #result_area{

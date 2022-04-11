@@ -1,5 +1,6 @@
 var express=require('express');
 var router = express.Router();
+var http=require("http");
 var multer = require('multer');
 var path = require('path');
 var File = require('../models/fileSchema');
@@ -47,23 +48,26 @@ router.post('/mailing',(req,res)=>{
         }
     })
 
-    var sender = transport.sendMail({
+    var sender = transport.sendMail ({
         from : req.body.requester,
         to: req.body.recepient,
-        subject:`${req.body.requester}`+"님이 보낸 메일을 확인해보세요!",
-        html:`<h3> 안녕하세요. 파일 공유 서비스 letsShare 입니다</h3>
-            <p> 본 메일은 ${req.body.requester} 님의 요청으로 이루어졌습니다.</p>
-            <p> 모르는 이메일 주소라면 링크를 누르지 마세요.</p>
-            <p> 링크는 1시간 동안 유효합니다.</p>
+        subject:`${req.body.requester}`+"さんが送ったメールをご確認ください!",
+        html:`<h3> こんにちは。 ファイル共有サービス letsShare です。</h3>
+            <p> 本メールは ${req.body.requester} さんの要求により行います。</p>
+            <p> 知らないメールアドレスならリンクを押さないでください。</p>
+            <p> リンクは１時間のみ有効です。</p>
                 <div>
-                <p> 링크 : <a href=${req.body.result}>여기를 클릭하세요</a></p>
+                <p> リンク : <a href=${req.body.result}>こちらをクリックしてください</a></p>
                 <br>
+                <p> 以下は${req.body.requester}のメモです。</p>
                 ${req.body.memo}
                 </div>`,
     })
-
-    return res.redirect('/');
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+    res.write("<script>alert('メールを送りました！　ホームに帰ります。')</script>");
+    res.write("<script>window.location=\"/\"</script>");
 })
+
 
 module.exports=router;
 

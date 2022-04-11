@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 *{
     font-family: 'Bebas Neue', cursive;
 }
 h1{
-
     position: absolute;
     left: 50%;
     top:30%;
     transform: translate(-50%,-50%);
+    white-space: nowrap;
 }
 
 #main{
@@ -30,7 +31,7 @@ h1{
     width:300px;
     height: 30px;
     margin-left: -150px;
-    margin-top: 40px;
+    margin-top: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,7 +61,6 @@ h1{
     outline: none;
     padding: 16px 24px;
     text-align: center;
-    -webkit-user-select: none;
 
 }
 
@@ -71,7 +71,6 @@ h1{
 .inputfile+label:hover {
   color: #fff;
   background-color: #1A1A1A;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 .inputfile+label:active {
@@ -79,3 +78,20 @@ h1{
   transform: translateY(0);
 }
 
+#btn{
+  background-color: rgb(196, 196, 196);
+  color:black;
+  box-sizing: border-box;
+  width: 300px;
+  height: 150;
+}
+
+#btn:hover{
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+#btn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

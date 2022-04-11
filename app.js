@@ -37,7 +37,7 @@ app.use(session({
 app.use('/', filesRouter);
 app.use('/downloads',downloadRouter);
 
-mongoose.connect(process.env.MONGODB_URL ,{
+mongoose.connect(process.env.DB_URL ,{
   useNewUrlParser:true,
   useUnifiedTopology:true,
 }).then(()=>{
