@@ -20,11 +20,7 @@ const fileSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    createdAt:{
-        type:Date,
-        expires:'3600',
-        default:Date.now,
-    }
 });
 
+fileSchema.index({createdAt: 1},{expireAfterSeconds: 3600});
 module.exports=mongoose.model('File',fileSchema);
