@@ -18,8 +18,3 @@ p{
     transform: translate(-50%,-50%);
     white-space: nowrap;
 }
-
-#two{
-    left: 50%;
-    top:40%;
-}

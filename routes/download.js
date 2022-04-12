@@ -9,11 +9,16 @@ router.get('/:uuid',async (req,res)=>{
     })
 
     if(!fileDownload){
-        return res.render('error',{message1:"ファイルが存在しません。",message2:"リンクをご確認お願いします。"})
+        return res.render('error',{message1:"ファイルが存在しません。"})
     }
 
     const filePath = `${__dirname}/../${fileDownload.path}`;
-    return res.download(filePath);
+    res.download(filePath,(err)=>{
+        if(err){
+            console.log(err);
+            return res.render('expired');
+        }
+    })
 })
 
 module.exports=router;
