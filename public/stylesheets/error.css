@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*{
+    font-family: 'Bebas Neue', cursive;
+}
+h1{
+    position: absolute;
+    left: 50%;
+    top:45%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+}
+
+p{
+    position: absolute;
+    left: 50%;
+    top:30%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+}
+
+#two{
+    left: 50%;
+    top:40%;
+}

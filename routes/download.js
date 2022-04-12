@@ -9,9 +9,7 @@ router.get('/:uuid',async (req,res)=>{
     })
 
     if(!fileDownload){
-        return res.json({
-            message:"file doesn't exist",
-        })
+        return res.render('error',{message1:"ファイルが存在しません。",message2:"リンクをご確認お願いします。"})
     }
 
     const filePath = `${__dirname}/../${fileDownload.path}`;

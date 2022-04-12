@@ -10,14 +10,16 @@ router.get('/:uuid',async (req,res)=>{
     })
 
     if(!fileViewer){
-        return res.json({
-            message:"file doesn't exist",
-        })
+        return res.render('error',{message1:"ファイルが存在しません。",message2:"リンクをご確認お願いします。"})
     }
 
     const filePath = `${__dirname}/../${fileViewer.path}`;
     res.writeHead(200);
-    res.end(fs.readFileSync(filePath));
+    res.end(fs.readFileSync(filePath,(err)=>{
+        if(err){
+            res.render('error',{message:"Something went wrong"})
+        }
+    }));
 
 })
 
