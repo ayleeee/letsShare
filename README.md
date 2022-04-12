@@ -1,5 +1,7 @@
 # File Sharing System using Node.js
-File Sharing System with 1 hour long links / リンクで行う簡単なファイル共有サービス
+リンクで行う簡単なファイル共有サービス
+
+
 https://file-sharing-system-aylee.herokuapp.com/
 
 ### Configuration
